@@ -7,8 +7,6 @@ import android.os.Bundle;
 public class MainActivity extends BaseActivity {
 
 
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,11 +1,8 @@
 package com.example.hamza.allotechnicien;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.os.Bundle;
 
 public class MainActivity extends BaseActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

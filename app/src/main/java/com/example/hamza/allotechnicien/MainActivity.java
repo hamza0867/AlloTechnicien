@@ -12,5 +12,6 @@ public class MainActivity extends BaseActivity {
         contentView = getLayoutInflater().inflate(R.layout.subscribe_activity_layout, null);
         contentView.setLayoutParams(layoutParams);
         activityLayout.addView(contentView);
+        // :-)
     }
 }

@@ -1,5 +1,6 @@
 package com.example.hamza.allotechnicien;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,10 +46,12 @@ public class SubscribeActivity extends BaseActivity {
                 Toast.makeText(getApplicationContext(), "les deux mots de passe donne ne sont pas les memes", Toast.LENGTH_SHORT).show();
                 return;
             }
-            String request = "http://192.168.1.14:8080/AlloTechnicienApp/Subscribe";
+            String request = "http://192.168.43.181:8080/AlloTechnicienApp/Subscribe";
             String urlParameters = String.format("login=%s&password=%s", login, password);
             HttpPostAsyncTask task = new HttpPostAsyncTask(urlParameters, getApplicationContext());
             task.execute(request);
+            Intent intent = new Intent(SubscribeActivity.this, BaseActivity.class);
+            startActivity(intent);
         });
     }
 

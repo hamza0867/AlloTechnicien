@@ -16,6 +16,7 @@ public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
 
     private String urlParameters;
     private Context context;
+    private String result;
 
     public HttpPostAsyncTask(String urlParameters, Context context){
         this.urlParameters = urlParameters;
@@ -41,7 +42,7 @@ public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
                 wr.close();
             }
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String result = in.readLine();
+            result = in.readLine();
             in.close();
             return result;
         } catch (MalformedURLException e) {
@@ -56,4 +57,7 @@ public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
         Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
     }
 
+    public String getResult() {
+        return result;
+    }
 }

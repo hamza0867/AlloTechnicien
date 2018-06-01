@@ -19,10 +19,10 @@ public class MainActivity extends BaseActivity {
         contentView = getLayoutInflater().inflate(R.layout.activity_main, null);
         contentView.setLayoutParams(layoutParams);
         activityLayout.addView(contentView);
-        loginET = (EditText) findViewById(R.id.loginEditText);
-        passwordET = (EditText) findViewById(R.id.passwordEditText);
-        loginButton = (Button) findViewById(R.id.loginButton);
-        subscribeTV = (TextView) findViewById(R.id.subscribeTextView);
+        loginET =  findViewById(R.id.loginEditText);
+        passwordET =  findViewById(R.id.passwordEditText);
+        loginButton =  findViewById(R.id.loginButton);
+        subscribeTV =  findViewById(R.id.subscribeTextView);
         subscribeTV.setOnClickListener((View v)->{
             Intent intent = new Intent(this, SubscribeActivity.class);
             startActivity(intent);
@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity {
         loginButton.setOnClickListener((View v)->{
             String login = loginET.getText().toString();
             String password = passwordET.getText().toString();
-            String request = "http://192.168.43.181:8080/AlloTechnicienApp/Login";
+            String request = "http://192.168.1.14:8080/AlloTechnicienApp/Login";
             String urlParameters = String.format("login=%s&password=%s", login, password);
             HttpPostAsyncTask task = new HttpPostAsyncTask(urlParameters, getApplicationContext());
             task.execute(request);
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
                 result = task.getResult();
             }
             if(result.equalsIgnoreCase("OK")){
-                Intent intent = new Intent(MainActivity.this, BaseActivity.class);
+                Intent intent = new Intent(MainActivity.this, AccueilActivity.class);
                 startActivity(intent);
             }
         });

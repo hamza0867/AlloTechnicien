@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Allo\'Technicien</string>
+    <string-array name="typePanne">
+        <item>Plomberie</item>
+        <item>Electricite</item>
+        <item>Ferronerie</item>
+        <item>Maconnerie</item>
+        <item>Menuiserie</item>
+    </string-array>
+    <string name="promptTypePanne"> Type de Panne</string>
 </resources>

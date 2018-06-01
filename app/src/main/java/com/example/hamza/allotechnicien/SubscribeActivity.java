@@ -7,17 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
 public class SubscribeActivity extends BaseActivity {
 
@@ -46,11 +35,11 @@ public class SubscribeActivity extends BaseActivity {
                 Toast.makeText(getApplicationContext(), "les deux mots de passe donne ne sont pas les memes", Toast.LENGTH_SHORT).show();
                 return;
             }
-            String request = "http://192.168.43.181:8080/AlloTechnicienApp/Subscribe";
+            String request = "http://192.168.1.14:8080/AlloTechnicienApp/Subscribe";
             String urlParameters = String.format("login=%s&password=%s", login, password);
             HttpPostAsyncTask task = new HttpPostAsyncTask(urlParameters, getApplicationContext());
             task.execute(request);
-            Intent intent = new Intent(SubscribeActivity.this, BaseActivity.class);
+            Intent intent = new Intent(SubscribeActivity.this, MainActivity.class);
             startActivity(intent);
         });
     }

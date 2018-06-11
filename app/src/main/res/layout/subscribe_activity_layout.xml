@@ -30,6 +30,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
+                android:labelFor="@id/loginET"
                 android:text="Login: "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/telephoneTV" />
@@ -42,6 +43,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Password :"
+                android:labelFor="@id/passwordET"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loginTV" />
 
@@ -53,6 +55,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Confirm Password :"
+                android:labelFor="@id/confirmPasswordET"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
 
@@ -148,6 +151,7 @@
                 android:layout_marginTop="44dp"
                 android:gravity="center"
                 android:text="Nom:"
+                android:labelFor="@id/nomET"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -159,11 +163,13 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Telephone:"
+                android:labelFor="@id/telephoneET"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/prenomTV" />
 
             <TextView
                 android:id="@+id/prenomTV"
+                android:labelFor="@id/prenomET"
                 android:layout_width="135dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"

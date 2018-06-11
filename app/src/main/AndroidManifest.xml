@@ -22,7 +22,10 @@
         <activity android:name=".BaseActivity" />
         <activity android:name=".AccueilActivity" />
         <activity android:name=".ClientActivity" />
-        <activity android:name=".DeclarerPanneActivity"></activity>
+        <activity android:name=".DeclarerPanneActivity" />
+        <activity android:name=".TechnicienActivity" />
+        <activity android:name=".TechniciensDispoActivity" />
+        <activity android:name=".OffresDisposActivity"></activity>
     </application>
 
 </manifest>

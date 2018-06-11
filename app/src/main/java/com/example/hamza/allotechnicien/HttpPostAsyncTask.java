@@ -27,7 +27,7 @@ public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
 
         try {
-            URL url = new URL(params[0]);
+            URL url = new URL(BaseActivity.SERVER_URL + params[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setDoInput(true);

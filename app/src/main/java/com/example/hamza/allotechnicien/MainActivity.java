@@ -30,10 +30,9 @@ public class MainActivity extends BaseActivity {
         loginButton.setOnClickListener((View v)->{
             String login = loginET.getText().toString();
             String password = passwordET.getText().toString();
-            String request = "http://192.168.1.14:8080/AlloTechnicienApp/Login";
             String urlParameters = String.format("login=%s&password=%s", login, password);
             HttpPostAsyncTask task = new HttpPostAsyncTask(urlParameters, getApplicationContext());
-            task.execute(request);
+            task.execute("/Login");
             String result = null;
             while (result == null){
                 result = task.getResult();

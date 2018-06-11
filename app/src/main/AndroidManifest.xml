@@ -21,11 +21,11 @@
         <activity android:name=".SubscribeActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".AccueilActivity" />
-        <activity android:name=".ClientActivity" />
-        <activity android:name=".DeclarerPanneActivity" />
-        <activity android:name=".TechnicienActivity" />
-        <activity android:name=".TechniciensDispoActivity" />
-        <activity android:name=".OffresDisposActivity"></activity>
+        <activity android:name=".clientActivities.ClientActivity" />
+        <activity android:name=".clientActivities.DeclarerPanneActivity" />
+        <activity android:name=".technicienActivities.TechnicienActivity" />
+        <activity android:name=".clientActivities.TechniciensDispoActivity" />
+        <activity android:name=".technicienActivities.OffresDisposActivity"></activity>
     </application>
 
 </manifest>

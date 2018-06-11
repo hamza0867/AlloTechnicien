@@ -1,6 +1,9 @@
-package com.example.hamza.allotechnicien;
+package com.example.hamza.allotechnicien.clientActivities;
 
 import android.os.Bundle;
+
+import com.example.hamza.allotechnicien.BaseActivity;
+import com.example.hamza.allotechnicien.R;
 
 public class TechniciensDispoActivity extends BaseActivity {
 

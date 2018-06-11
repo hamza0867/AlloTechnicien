@@ -7,9 +7,9 @@ import android.widget.RelativeLayout;
 
 public class BaseActivity extends AppCompatActivity {
 
-    RelativeLayout activityLayout;
-    RelativeLayout.LayoutParams layoutParams;
-    View contentView;
+    protected RelativeLayout activityLayout;
+    protected RelativeLayout.LayoutParams layoutParams;
+    protected View contentView;
     public static String SERVER_URL = "http://192.168.1.14:8080/AlloTechnicienApp";
 
     @Override

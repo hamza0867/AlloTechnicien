@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.hamza.allotechnicien.clientActivities.ClientActivity;
+
 public class AccueilActivity extends BaseActivity {
 
     Button clientButton;

@@ -28,7 +28,9 @@ public class MainActivity extends BaseActivity {
             startActivity(intent);
         });
         loginButton.setOnClickListener((View v)->{
-            String login = loginET.getText().toString();
+
+
+            /*String login = loginET.getText().toString();
             String password = passwordET.getText().toString();
             String urlParameters = String.format("login=%s&password=%s", login, password);
             HttpPostAsyncTask task = new HttpPostAsyncTask(urlParameters, getApplicationContext());
@@ -40,7 +42,11 @@ public class MainActivity extends BaseActivity {
             if(result.equalsIgnoreCase("OK")){
                 Intent intent = new Intent(MainActivity.this, AccueilActivity.class);
                 startActivity(intent);
-            }
+            }*/
+
+            Intent intent = new Intent(MainActivity.this, AccueilActivity.class );
+            startActivity(intent);
+
         });
     }
 }

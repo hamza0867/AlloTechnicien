@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.hamza.allotechnicien.clientActivities.ClientActivity;
+import com.example.hamza.allotechnicien.technicienActivities.TechnicienActivity;
 
 public class AccueilActivity extends BaseActivity {
 
@@ -28,7 +29,7 @@ public class AccueilActivity extends BaseActivity {
         });
 
         technicienButton.setOnClickListener(v -> {
-            Intent intent = new Intent(AccueilActivity.this, BaseActivity.class);
+            Intent intent = new Intent(AccueilActivity.this, TechnicienActivity.class);
             startActivity(intent);
         });
     }

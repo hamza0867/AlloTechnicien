@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
 public class SubscribeActivity extends BaseActivity {
@@ -34,7 +33,7 @@ public class SubscribeActivity extends BaseActivity {
         telephoneET = findViewById(R.id.telephoneET);
         confirmButton =  findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener((View v) -> {
-            String login = loginET.getText().toString();
+            /*String login = loginET.getText().toString();
             String password = passwordET.getText().toString();
             String confirmPassword = confirmPasswordET.getText().toString();
             String nom = nomET.getText().toString();
@@ -48,7 +47,7 @@ public class SubscribeActivity extends BaseActivity {
             String urlParameters = String.format("login=%s&password=%s&nom=%s&prenom=%s&telephone=%s",
                     login, password, nom, prenom, telephone);
             HttpPostAsyncTask task = new HttpPostAsyncTask(urlParameters, getApplicationContext());
-            task.execute(request);
+            task.execute(request);*/
             Intent intent = new Intent(SubscribeActivity.this, MainActivity.class);
             startActivity(intent);
         });

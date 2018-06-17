@@ -1,26 +1,23 @@
 package com.example.hamza.allotechnicien;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
 
-    private String urlParameters;
-    private Context context;
+    private String jsonData;
     private String result;
+    private String token;
 
-    public HttpPostAsyncTask(String urlParameters, Context context){
-        this.urlParameters = urlParameters;
-        this.context = context;
+    public HttpPostAsyncTask(String jsonData){
+        this.jsonData = jsonData;
+        this.result = null;
+        this.token = null;
     }
 
     @Override
@@ -33,31 +30,38 @@ public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
             conn.setDoInput(true);
             conn.setInstanceFollowRedirects(false);
             conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            conn.setRequestProperty("charset", "utf-8");
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            conn.setRequestProperty("Accept", "application/json");
+            if (BaseActivity.getToken() != null){
+                conn.setRequestProperty("Authorization", BaseActivity.getToken());
+            }
             conn.setUseCaches(false);
-            try( OutputStreamWriter wr = new OutputStreamWriter( conn.getOutputStream())) {
-                wr.write(urlParameters);
+            try( OutputStream wr = conn.getOutputStream()) {
+                wr.write(jsonData.getBytes("UTF-8"));
                 wr.flush();
                 wr.close();
             }
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            result = in.readLine();
-            in.close();
-            return result;
-        } catch (MalformedURLException e) {
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+            if(conn.getResponseCode() == HttpURLConnection.HTTP_OK){
+                result = "OK";
+                if (BaseActivity.getToken() == null) {
+                    token = conn.getHeaderField("Authorization");
+                }
+                return result;
+            }
 
-    @Override
-    protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+        } catch (MalformedURLException e) {
+            result = "ERROR";
+        } catch (IOException e) {
+            result = "ERROR";
+        }
+        return result;
     }
 
     public String getResult() {
         return result;
+    }
+
+    public String getToken() {
+        return token;
     }
 }

@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.hamza.allotechnicien.models.Utilisateur;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 public class SubscribeActivity extends BaseActivity {
@@ -33,7 +38,7 @@ public class SubscribeActivity extends BaseActivity {
         telephoneET = findViewById(R.id.telephoneET);
         confirmButton =  findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener((View v) -> {
-            /*String login = loginET.getText().toString();
+            String login = loginET.getText().toString();
             String password = passwordET.getText().toString();
             String confirmPassword = confirmPasswordET.getText().toString();
             String nom = nomET.getText().toString();
@@ -43,13 +48,25 @@ public class SubscribeActivity extends BaseActivity {
                 Toast.makeText(getApplicationContext(), "les deux mots de passe donne ne sont pas les memes", Toast.LENGTH_SHORT).show();
                 return;
             }
-            String request = "/Subscribe";
-            String urlParameters = String.format("login=%s&password=%s&nom=%s&prenom=%s&telephone=%s",
-                    login, password, nom, prenom, telephone);
-            HttpPostAsyncTask task = new HttpPostAsyncTask(urlParameters, getApplicationContext());
-            task.execute(request);*/
-            Intent intent = new Intent(SubscribeActivity.this, MainActivity.class);
-            startActivity(intent);
+            Utilisateur utilisateur = new Utilisateur(login, password, nom, prenom, telephone);
+            BaseActivity.setUtilisateurId(0);
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                String jsonString = mapper.writeValueAsString(utilisateur);
+                String request = "/utilisateurs/inscription";
+                HttpPostAsyncTask task = new HttpPostAsyncTask(jsonString);
+                task.execute(request);
+                String result = null;
+                while (result == null){
+                    result = task.getResult();
+                }
+                if (result.equalsIgnoreCase("OK")){
+                    Intent intent = new Intent(SubscribeActivity.this, AccueilActivity.class);
+                    startActivity(intent);
+                }
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
         });
     }
 

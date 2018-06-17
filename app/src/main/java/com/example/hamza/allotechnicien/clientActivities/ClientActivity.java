@@ -35,5 +35,10 @@ public class ClientActivity extends BaseActivity {
             Intent intent = new Intent(ClientActivity.this, AccueilActivity.class);
             startActivity(intent);
         });
+
+        profileButton.setOnClickListener(v->{
+            Intent intent = new Intent(ClientActivity.this, ProfileClientActivity.class);
+            startActivity(intent);
+        });
     }
 }

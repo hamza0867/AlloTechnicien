@@ -7,6 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 public class MainActivity extends BaseActivity {
 
     EditText loginET, passwordET;
@@ -30,22 +34,32 @@ public class MainActivity extends BaseActivity {
         loginButton.setOnClickListener((View v)->{
 
 
-            /*String login = loginET.getText().toString();
+            String login = loginET.getText().toString();
             String password = passwordET.getText().toString();
-            String urlParameters = String.format("login=%s&password=%s", login, password);
-            HttpPostAsyncTask task = new HttpPostAsyncTask(urlParameters, getApplicationContext());
-            task.execute("/Login");
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonString = "";
+            try {
+                JsonNode rootNode = mapper.createObjectNode();
+                ((ObjectNode) rootNode).put("email", login);
+                ((ObjectNode) rootNode).put("password", password);
+                jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(rootNode);
+            } catch (Exception e){
+            }
+            HttpPostAsyncTask task = new HttpPostAsyncTask(jsonString);
+            task.execute("/login");
             String result = null;
             while (result == null){
                 result = task.getResult();
             }
-            if(result.equalsIgnoreCase("OK")){
+            if (result.equalsIgnoreCase("OK")){
+                do{
+                    task.getToken();
+                }while (task.getToken() == null);
+                BaseActivity.setToken(task.getToken());
                 Intent intent = new Intent(MainActivity.this, AccueilActivity.class);
+                BaseActivity.setUtilisateurId(-1);
                 startActivity(intent);
-            }*/
-
-            Intent intent = new Intent(MainActivity.this, AccueilActivity.class );
-            startActivity(intent);
+            }
 
         });
     }

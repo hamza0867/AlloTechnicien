@@ -25,7 +25,8 @@
         <activity android:name=".clientActivities.DeclarerPanneActivity" />
         <activity android:name=".technicienActivities.TechnicienActivity" />
         <activity android:name=".clientActivities.TechniciensDispoActivity" />
-        <activity android:name=".technicienActivities.OffresDisposActivity"></activity>
+        <activity android:name=".technicienActivities.OffresDisposActivity" />
+        <activity android:name=".clientActivities.ProfileClientActivity"></activity>
     </application>
 
 </manifest>

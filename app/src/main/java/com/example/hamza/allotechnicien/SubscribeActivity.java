@@ -9,7 +9,9 @@ import android.widget.Toast;
 
 import com.example.hamza.allotechnicien.models.Utilisateur;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 
 public class SubscribeActivity extends BaseActivity {
@@ -61,8 +63,28 @@ public class SubscribeActivity extends BaseActivity {
                     result = task.getResult();
                 }
                 if (result.equalsIgnoreCase("OK")){
-                    Intent intent = new Intent(SubscribeActivity.this, AccueilActivity.class);
-                    startActivity(intent);
+
+                    try {
+                        JsonNode rootNode = mapper.createObjectNode();
+                        ((ObjectNode) rootNode).put("email", login);
+                        ((ObjectNode) rootNode).put("password", password);
+                        jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(rootNode);
+                    } catch (Exception e){
+                    }
+                    HttpPostAsyncTask task2 = new HttpPostAsyncTask(jsonString);
+                    task2.execute("/login");
+                    String result2 = null;
+                    while (result2 == null){
+                        result2 = task2.getResult();
+                    }
+                    if (result2.equalsIgnoreCase("OK")){
+                        do{
+                            task2.getToken();
+                        }while (task2.getToken() == null);
+                        BaseActivity.setToken(task2.getToken());
+                        Intent intent = new Intent(SubscribeActivity.this, AccueilActivity.class);
+                        startActivity(intent);
+                    }
                 }
             } catch (JsonProcessingException e) {
                 e.printStackTrace();

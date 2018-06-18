@@ -44,7 +44,7 @@ public class DeclarerPanneActivity extends BaseActivity {
             try {
                 String jsonString = mapper.writeValueAsString(demande);
                 HttpPostAsyncTask task = new HttpPostAsyncTask(jsonString);
-                task.execute("/demandes/ajout/3/0");
+                task.execute("/demandes/ajout/3/1");
                 String result = null;
                 while (result == null){
                     result = task.getResult();

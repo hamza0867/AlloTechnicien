@@ -14,6 +14,7 @@ public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
     private String result;
     private String token;
 
+
     public HttpPostAsyncTask(String jsonData){
         this.jsonData = jsonData;
         this.result = null;

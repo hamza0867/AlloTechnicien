@@ -12,7 +12,7 @@ public class BaseActivity extends AppCompatActivity {
     protected RelativeLayout activityLayout;
     protected RelativeLayout.LayoutParams layoutParams;
     protected View contentView;
-    public static String SERVER_URL = "http://172.20.125.109:8084";
+    public static String SERVER_URL = "http://192.168.43.181:8084";
     private static long utilisateurId;
     private static Utilisateur utilisateur;
     private static String token;
@@ -45,6 +45,8 @@ public class BaseActivity extends AppCompatActivity {
     public static String getToken() {
         return token;
     }
+
+
 
     public static void setToken(String token) {
         BaseActivity.token = token;
